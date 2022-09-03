@@ -15,7 +15,7 @@ public class AppJwtUtil {
     // 最小刷新间隔(S)
     private static final int REFRESH_TIME = 300;
 
-    // 生产ID
+    // 生产ID 根据ID生成token
     public static String getToken(Long id){
         Map<String, Object> claimMaps = new HashMap<>();
         claimMaps.put("id",id);

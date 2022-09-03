@@ -149,7 +149,7 @@ public class ResponseResult<T> implements Serializable {
 
 
         //新增，修改，删除  在项目中统一返回成功即可
-       /* ResponseResult result = ResponseResult.errorResult(AppHttpCodeEnum.SUCCESS);
+        /*ResponseResult result = ResponseResult.errorResult(AppHttpCodeEnum.SUCCESS);
         System.out.println(JSON.toJSONString(result));*/
 
 
