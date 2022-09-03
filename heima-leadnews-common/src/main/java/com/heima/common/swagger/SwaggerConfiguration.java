@@ -16,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
+// 该类需要加入到spring.factories 自动配置里面
 public class SwaggerConfiguration {
 
    @Bean

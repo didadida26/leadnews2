@@ -128,7 +128,7 @@
             <artifactId>joda-time</artifactId>
             <version>2.10.5</version>
         </dependency>
-<!--        集成Swagger-->
+        <!--        集成Swagger-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -136,6 +136,11 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+<!--        集成 knife4j-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
         </dependency>
 
     </dependencies>
