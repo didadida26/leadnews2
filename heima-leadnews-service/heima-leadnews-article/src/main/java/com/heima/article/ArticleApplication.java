@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@MapperScan("com.heima.article.mapper")
+@EnableDiscoveryClient  // 加入nacos注册中心
+@MapperScan("com.heima.article.mapper") // mybatis plus包扫描
 public class ArticleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ArticleApplication.class,args);
     }
-
+    // MP分页插件
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
