@@ -2,7 +2,6 @@ package com.heima.wemedia.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.heima.apis.article.IArticleClient;
 import com.heima.common.aliyun.GreenImageScan;
 import com.heima.common.aliyun.GreenTextScan;
@@ -34,9 +33,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @Slf4j

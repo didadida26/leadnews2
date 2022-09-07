@@ -6,6 +6,7 @@ import com.heima.article.mapper.ApArticleConfigMapper;
 import com.heima.article.mapper.ApArticleContentMapper;
 import com.heima.article.mapper.ApArticleMapper;
 import com.heima.article.service.ApArticleService;
+import com.heima.article.service.ArticleFreemarkerService;
 import com.heima.common.constants.ArticleConstants;
 import com.heima.model.article.dtos.ArticleDto;
 import com.heima.model.article.dtos.ArticleHomeDto;
@@ -18,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -83,6 +85,8 @@ public class ApArticleServiceImpl extends ServiceImpl<ApArticleMapper, ApArticle
     private ApArticleConfigMapper apArticleConfigMapper;
     @Autowired
     private ApArticleContentMapper apArticleContentMapper;
+    @Autowired
+    private ArticleFreemarkerService articleFreemarkerService;
 
     /**
      * 保存APP端文章
@@ -132,6 +136,9 @@ public class ApArticleServiceImpl extends ServiceImpl<ApArticleMapper, ApArticle
             apArticleContent.setContent(dto.getContent()); // 设置更新后的文章内容
             apArticleContentMapper.updateById(apArticleContent); // 更新文章内容
         }
+
+        // 异步调用 生成静态文件到minion, 加@Async到方法上
+        articleFreemarkerService.buildArticle2MinIO(apArticle, dto.getContent());
 
         //3.结果返回  文章的id
         return ResponseResult.okResult(apArticle.getId());

@@ -22,6 +22,7 @@ import com.heima.wemedia.mapper.WmNewsMapper;
 import com.heima.wemedia.mapper.WmNewsMaterialMapper;
 import com.heima.wemedia.service.WmNewsAutoScanService;
 import com.heima.wemedia.service.WmNewsService;
+import com.heima.wemedia.service.WmNewsTaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -89,6 +90,8 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
 
     @Autowired
     private WmNewsAutoScanService wmNewsAutoScanService; // 异步审核
+    @Autowired
+    private WmNewsTaskService wmNewsTaskService; // 定时调用
 
     /**
      * 发布修改文章或者保存为草稿
@@ -135,7 +138,9 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         saveRelativeInfo4Cover(dto, wmNews, materials);
 
         // 审核文章
-        wmNewsAutoScanService.autoScanWmNews(wmNews.getId());
+        // 不直接调用，交给定时任务调用
+//        wmNewsAutoScanService.autoScanWmNews(wmNews.getId());
+        wmNewsTaskService.addNews2Task(wmNews.getId(), wmNews.getPublishTime());
 
         return ResponseResult.okResult(AppHttpCodeEnum.SUCCESS);
     }
