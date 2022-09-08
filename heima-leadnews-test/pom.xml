@@ -13,6 +13,8 @@
         <module>freemarker-demo</module>
         <module>minio-demo</module>
         <module>tess4j-demo</module>
+        <module>kafka-demo</module>
+        <module>es-init</module>
     </modules>
 
     <artifactId>heima-leadnews-test</artifactId>
