@@ -64,7 +64,6 @@ public class AuthorizeFilter implements Ordered, GlobalFilter {
             exchange.mutate().request(serverHttpRequest);
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -26,7 +26,7 @@ public class AliyunTest {
 
     @Test
     public void testScanText() throws Exception {
-        String text = "This paper introduces how to use the Java SDK file audit interface to detect the text and picture information in the file. Small loan of our school, safe and convenient, unsecured, doorto door service,";
+        String text = "爱我是一个好人";
         Map map = greenTextScan.greeTextScan(text);
         System.out.println(map);
     }
